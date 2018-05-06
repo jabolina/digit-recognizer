@@ -15,7 +15,7 @@ class MultiLayerPerceptronModel:
         self.dim = -1
         self.nb_class = -1
         self.use_pca = use_pca
-        self.pca_components = pca_components
+        self.pca_components = int(pca_components)
 
         if int(epochs) > 0:
             self.epochs = int(epochs)
