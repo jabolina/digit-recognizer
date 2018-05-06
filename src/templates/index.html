@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MLP</title>
+    <link rel="shortcut icon" type="image/png" href="https://www.favicon.cc/logo3d/87744.png"/>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+
+    <script src="../static/js/request-interface.js"></script>
+    <script src="../static/js/script.js"></script>
+</head>
+<body>
+    <div class="mlp-header">
+        <div class="mlp-header-conf">
+            <input id="pca-nb-components" class="mlp-customized-input" placeholder="Número de componentes" disabled>
+            <input id="use-pca" type="checkbox" value="right"/>
+            <label for="use-pca">Utilizar PCA</label><br>
+            <input id="nb-epochs" class="mlp-customized-input" placeholder="Número de épocas">
+        </div>
+        <div id="train-button" class="mlp-header-option">
+                Treinar
+        </div><br>
+        <div id="train-loader" class="loader"></div>
+    </div>
+
+    <div class="mlp-header mlp-page-content">
+        <div class="mlp-column-larger">
+            <h2>Imagem:</h2>
+            <canvas id="selected-image" style="height: 300px; width: 300px"></canvas>
+        </div>
+        <div class="mlp-column-small">
+            <div id="predict-items" style="display: none">
+                <input id="predict-index" class="mlp-customized-input" type="text"
+                       placeholder="Insira um número entre 0-28000">
+                <div id="predict-button" class="mlp-header-option">
+                    Adivinhar
+                </div>
+            </div><br>
+            <div id="predict-loader" class="loader" style="margin-left: 93px"></div>
+        </div>
+        <div class="mlp-column-larger">
+            <h2>Previsto:</h2>
+            <p id="predicted-value" class="mlp-predicted-value"></p>
+        </div>
+    </div>
+</body>
+</html>
