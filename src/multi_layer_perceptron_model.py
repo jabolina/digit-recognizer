@@ -1,12 +1,10 @@
-import os
-
-import dotenv
+import config_prop
 import pandas as pd
 from keras.utils import np_utils
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-dotenv.load()
+config = config_prop.get_conf()
 
 
 class MultiLayerPerceptronModel:
@@ -29,7 +27,7 @@ class MultiLayerPerceptronModel:
         self.trained = False
 
     def load(self):
-        all_images = pd.read_csv(os.getenv('CSV_TRAIN_PATH'))
+        all_images = pd.read_csv(config['CSV_TRAIN_PATH'])
         self.label = all_images.iloc[:self.data_quantity, :1].values
         self.images = all_images.iloc[:self.data_quantity, 1:].values
 
@@ -55,7 +53,7 @@ class MultiLayerPerceptronModel:
             self.trained = True
 
     def load_test(self):
-        test_images = pd.read_csv(os.getenv('CSV_TEST_PATH'))
+        test_images = pd.read_csv(config['CSV_TEST_PATH'])
 
         test_images[test_images > 0] = 1
         sc = StandardScaler()

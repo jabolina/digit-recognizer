@@ -1,3 +1,4 @@
+import config_prop
 import os
 import json
 import numpy as np
@@ -10,6 +11,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 app = Flask(__name__)
 global_model = None
+config = config_prop.get_conf()
 
 
 class NumpyEncoder(json.JSONEncoder):
@@ -25,7 +27,7 @@ class NumpyEncoder(json.JSONEncoder):
 def train_model():
     global global_model
     conf = request.get_json(silent=True)
-    model = mlp_model.MultiLayerPerceptronModel(epochs=conf['epochs'], data_quantity=int(os.getenv('TRAIN_SIZE')),
+    model = mlp_model.MultiLayerPerceptronModel(epochs=conf['epochs'], data_quantity=int(config['TRAIN_SIZE']),
                                                 use_pca=conf['usePca'], pca_components=conf['nbComponents'])
     model.load()
     model.process()
